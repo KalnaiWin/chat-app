@@ -16,3 +16,7 @@
     - Create folder controllers, routes in src folder and .env in backend folder
 3. Authentication
     - Add auth.route.js and import it into server.js file 
+
+===== Stage 2.Deploy on Sevalla =====
+
+1. Set up __dirname to contain frontend in backend

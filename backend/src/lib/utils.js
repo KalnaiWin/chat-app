@@ -2,7 +2,11 @@ import jwt from "jsonwebtoken";
 
 export const genrateToken = (userId, res) => {
   // .sign( object , secretKey, option )
-  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+  const secrect = process.env.JWT_SECRET;
+  if (!secrect) {
+    throw new Error("JWT_SECRET is not configured");
+  }
+  const token = jwt.sign({ userId }, secrect, {
     expiresIn: "7d", // seven days
   });
 

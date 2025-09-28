@@ -23,7 +23,7 @@
 
 ===== Stage 3: MongoDB Setup =====
 
-1. Set up mongoDB -> create new project -> copy password into .env file -> go to network access to allow access from anywhere 
+1. Set up mongoDB -> create new project -> copy password into .env file -> (go to network access to allow access from anywhere ) (optional)
 2. Create a lib folder in src to contain db.js file which connect to mongoDB
 2.1. Create model folder in src contain user.js file define User
 3. Create controller auth signup function 

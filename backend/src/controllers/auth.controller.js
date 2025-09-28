@@ -35,15 +35,17 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
-      genrateToken(newUser._id, res);
-      await newUser.save();
+      // genrateToken(newUser._id, res);
+      // await newUser.save();
 
-      res.status(201).json({
-        // has something created
+      const savedUser = await newUser.save();
+      genrateToken(savedUser._id, res);
+
+      res.status(201).json({ // has something created
         _id: newUser.id,
         fullName: newUser.fullName,
         email: newUser.email,
-        password: newUser.password,
+        // password: newUser.password, // hide it to prevent leak password
         profilePic: newUser.profilePic,
       });
     } else {

@@ -35,3 +35,5 @@
 1. `npm install resend` -> Create api key in Resend -> copy api and paste into .env file
 2. Create a email template contain raw html
 3. Create resend file, env file in lib folder -> change process.env into ENV
+
+===== Stage 5: Login and Logout =====

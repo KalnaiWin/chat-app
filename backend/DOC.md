@@ -29,3 +29,9 @@
 3. Create controller auth signup function 
 3.1. Create a generateToken function -> create jwt to send it in cookies
 3.2. Test signup on Postman
+
+===== Stage 4: Send email welcome for user =====
+
+1. `npm install resend` -> Create api key in Resend -> copy api and paste into .env file
+2. Create a email template contain raw html
+3. Create resend file, env file in lib folder -> change process.env into ENV

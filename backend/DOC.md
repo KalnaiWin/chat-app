@@ -37,3 +37,10 @@
 3. Create resend file, env file in lib folder -> change process.env into ENV
 
 ===== Stage 5: Login and Logout =====
+
+===== Stage 6: Auth Middleware and updateProfile =====
+
+1. Create auth file from middleware folder - check if user authenticated
+2. `npm install cloudinary`: support upload videos, images -> create file cloudinary in lib folder
+3. Add cloud_name into .env file and create new API key in cloudinary and copy api_key and api_secret
+

@@ -20,5 +20,8 @@
     "url": "https://github.com/KalnaiWin/chat-app/issues"
   },
   "homepage": "https://github.com/KalnaiWin/chat-app#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cloudinary": "^2.7.0"
+  }
 }

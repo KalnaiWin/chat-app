@@ -21,8 +21,8 @@ export const getChatPartners = async (req, res) => {
     const loggedInUserId = req.user._id;
 
     const messages = await Message.find({
-      // find all messages user sender or reciever
-      $or: [{ senderId: loggedInUserId, receiverId: loggedInUserId }],
+      // find all messages where user is sender or receiver
+      $or: [{ senderId: loggedInUserId }, { receiverId: loggedInUserId }],
     });
 
     const chatPartnersId = [
@@ -71,6 +71,21 @@ export const sendMessage = async (req, res) => {
     const { text, image } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
+
+    if (!text && !image) {
+      return res
+        .status(400)
+        .json({ message: "Message must contain text or image" });
+    }
+    if (senderId.equals(receiverId)) {
+      return res
+        .status(400)
+        .json({ message: "Cannot send message to yourself" });
+    }
+    const receiverExists = await User.exists({ _id: receiverId });
+    if (!receiverExists) {
+      return res.status(404).json({ message: "Receiver not found" });
+    }
 
     let imageUrl;
 

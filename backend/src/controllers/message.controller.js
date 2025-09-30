@@ -6,7 +6,7 @@ export const getAllContacts = async (req, res) => {
   try {
     const loggedInUserId = req.user._id; // take id user from jwt
     const filteredUsers = await User.find({
-      _id: { $ne: loggedInUserId }, // filter every user is different this id
+      _id: { $ne: loggedInUserId }, // find every users are different this id
     }).select("-password");
 
     res.status(200).json(filteredUsers);

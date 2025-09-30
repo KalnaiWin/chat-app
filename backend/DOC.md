@@ -44,3 +44,17 @@
 2. `npm install cloudinary`: support upload videos, images -> create file cloudinary in lib folder
 3. Add cloud_name into .env file and create new API key in cloudinary and copy api_key and api_secret
 
+===== Stage 6: Rate Limit =====
+
+- This is set up allow how oftern people can refresh page, make request or try log in ( 429: too many requets )
+
+    ----------------------------------------
+    |       request                        | 
+    |          |                           |
+    |          v                           |
+    | Client -----> Rate Limter -----> API |
+    ----------------------------------------
+
+1. Install Arcjet for node + express: `npm i @arcjet/node @arcjet/inspect`
+2. add arcjet_key after sign in and arcjet_env = development
+

@@ -62,3 +62,8 @@
 
 1. Define messages in model folder
 2. Do step by steps like auth
+
+
+===== 10. Sign Up Page =====
+
+1.Install cors: `npm i cors`: 

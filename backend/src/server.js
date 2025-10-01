@@ -2,6 +2,7 @@ import express from "express"; // type: "module"
 // import dotenv from "dotenv";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
@@ -15,7 +16,8 @@ const __dirname = path.resolve(); //  gets absolute path to backend folder
 const port = ENV.PORT || 3000;
 
 app.use(express.json()); // is a middleware that we calling to access field user sent by req.body
-app.use(cookieParser); // allow read cookie from request
+app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })); // allow frontend send cookie to backend
+app.use(cookieParser()); // allow read cookie from request
 
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);

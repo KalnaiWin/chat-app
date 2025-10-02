@@ -10,13 +10,13 @@ export const arcjetProtection = async (req, res, next) => {
         return res
           .status(429)
           .json({ message: "Too many requests. Please try again" });
+      } else if (decision.reason.isBot()) {
+        return res.status(403).json({ message: "Bot access denied" });
+      } else {
+        return res
+          .status(403)
+          .json({ message: "Access denied by security policy" });
       }
-    } else if (decision.reason.isBot()) {
-      return res.status(403).json({ message: "Bot access denied" });
-    } else {
-      return res
-        .status(403)
-        .json({ message: "Access denied by security policy" });
     }
 
     // check for spoofed bots: which pretend to be human
@@ -27,7 +27,6 @@ export const arcjetProtection = async (req, res, next) => {
       });
     }
     next();
-
   } catch (error) {
     console.log("Arcjet Protections Error: ", error);
     next();

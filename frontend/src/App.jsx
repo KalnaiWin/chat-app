@@ -17,7 +17,7 @@ const App = () => {
   if (isCheckingAuth) return <PageLoader />;
 
   return (
-    <div className="min-h-screen bg-slate-900 relative flex items-center justify-center p-4 overflow-hidden">
+    <div className="min-h-screen bg-slate-900 relative flex items-center justify-center overflow-hidden">
       <div className="absolute md:-top-30 md:-left-30 md:size-120 size-70 -top-20 -left-20 bg-[#F7B267] opacity-80 blur-[70px] rounded-full" />
       <div className="absolute md:-bottom-50 md:-right-50 md:size-160 size-100 -bottom-30 -right-20 opacity-70 bg-[#F27059] blur-[100px] rounded-full" />
 

@@ -21,3 +21,12 @@
 1. Update the useAuthStore to check if user has been authenticated or not
 2. Install icon: `npm i lucide-react`
 3. Install toast for react : `npm i react-hot-toast` --> Put <Toaster> in App.jsx
+
+
+===== 11. Login and Logout Page =====
+
+
+
+===== 12. Chat Page layout =====
+
+1. create chatStore in store folder -> set up

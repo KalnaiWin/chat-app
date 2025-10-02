@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import BorderAnimate from "../components/BorderAnimate";
 import { LoaderIcon, Lock, MailsIcon, UserIcon } from "lucide-react";
 import { Link } from "react-router";
+import ButtonAoth from "../components/ButtonAoth";
 
 export const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -128,6 +129,7 @@ export const SignUpPage = () => {
                       )}
                     </button>
                   </form>
+                  <ButtonAoth text={"signup"} />
                   <div className="mt-6 text-center">
                     <Link to={"/login"} className="auth-link">
                       Alreay have an account? Login

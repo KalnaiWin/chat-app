@@ -5,21 +5,21 @@ const ButtonAoth = ({ text }) => {
       <div className="flex items-center w-fit">
         <div className="flex items-center gap-1 group hover:bg-white rounded-sm p-1 cursor-pointer">
           <img src="/assets/facebook.png" alt="Facebook" className="size-10" />
-          <p className="text-blue-600 text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-500 transition-all duration-1000">
+          <p className="text-blue-600 text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-100 transition-all duration-1000">
             Facebook
           </p>
         </div>
 
         <div className="flex items-center gap-1 group hover:bg-white rounded-sm p-1 cursor-pointer">
           <img src="/assets/github.png" alt="Github" className="size-10" />
-          <p className="text-black text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-500 transition-all duration-1000">
+          <p className="text-black text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-100 transition-all duration-1000">
             Github
           </p>
         </div>
 
         <div className="flex items-center gap-1 group hover:bg-white rounded-sm p-1 cursor-pointer">
           <img src="/assets/google.png" alt="Google" className="size-10" />
-          <p className="text-green-600 text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-500 transition-all duration-1000">
+          <p className="text-green-600 text-xl max-w-0 overflow-hidden group-hover:max-w-[200px] delay-100 transition-all duration-1000">
             Google
           </p>
         </div>

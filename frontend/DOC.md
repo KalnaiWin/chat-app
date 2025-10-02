@@ -15,3 +15,9 @@
 4. Set up path router in App.jsx file
 5. Install axios: `npm i axios`: Fetch API --> create axios file in lib folder
 6. Install zustand `npm i zustand`: manage global state like ( allow sharing state with every components instead write again ) --> create a file for zustand in store folder
+
+===== 10. Sign Up Page =====
+
+1. Update the useAuthStore to check if user has been authenticated or not
+2. Install icon: `npm i lucide-react`
+3. Install toast for react : `npm i react-hot-toast` --> Put <Toaster> in App.jsx

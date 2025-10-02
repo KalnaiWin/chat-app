@@ -1,2 +1,51 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@theme {
+  --animate-rotate-border: border-rotate 5s linear infinite;
+
+  @keyframes border-rotate {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.input {
+  @apply w-full bg-slate-800/50 border border-slate-700 rounded-lg py-2 pl-10 pr-4 text-slate-200 placeholder-slate-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent;
+}
+
+.auth-input-icon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 size-5;
+}
+
+.auth-input-label {
+  @apply block text-sm font-medium text-slate-300 mb-2;
+}
+
+.auth-badge {
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-[#F4845F]/20 text-[#F79D65];
+}
+
+.auth-btn {
+  @apply w-full bg-[#f6372d] text-white rounded-lg py-2.5 font-medium
+  hover:bg-[#F25C54] focus:ring-2 focus:ring-[#f6372d] cursor-pointer;
+}
+
+.auth-link {
+  @apply px-4 py-2 inline-block bg-[#F25C54]/10 rounded-lg text-[#F25C54]
+  hover:text-[#F25C54] hover:underline text-sm transition-colors;
+}

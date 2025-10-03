@@ -1,5 +1,5 @@
+import { UserLoadingSkeleton } from "../components/UserLoadingSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
-import { USerLoadingSkeleton } from "../components/USerLoadingSkeleton";
 import { useChatStore } from "../store/useChatStore";
 import { useEffect } from "react";
 
@@ -13,7 +13,7 @@ export const ContactList = () => {
     getAllContacts();
   }, [getAllContacts]);
 
-  if (isUsersLoading) return <USerLoadingSkeleton />;
+  if (isUsersLoading) return <UserLoadingSkeleton />;
 
   return (
     <>

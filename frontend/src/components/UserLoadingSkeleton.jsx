@@ -1,4 +1,4 @@
-export const USerLoadingSkeleton = () => {
+export const UserLoadingSkeleton = () => {
   return (
     <div className="space-y-2">
       {[1, 2, 3, 4, 5].map((item) => (

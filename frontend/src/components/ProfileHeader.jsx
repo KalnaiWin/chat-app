@@ -26,7 +26,7 @@ export const ProfileHeader = () => {
   };
 
   return (
-    <div className="md:p-6 p-2 border-b border-[#393939]">
+    <div className="md:p-4 p-2 border-b border-[#393939]">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="avatar avatar-online">

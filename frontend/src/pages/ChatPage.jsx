@@ -3,11 +3,11 @@ import { ContactList } from "./ContactList";
 import { useChatStore } from "../store/useChatStore";
 import { ProfileHeader } from "../components/ProfileHeader";
 import { ActiveTabSwitch } from "../components/ActiveTabSwitch";
-import { ChatContainer } from "../components/ChatContainer";
-import { WaitingSelect } from "../components/WaitingSelect";
+import { ChatContainer } from "./ChatContainer";
+import { NoConversation } from "../components/NoConversation";
 
 export const ChatPage = () => {
-  const { activeTab, setSelectedUSer } = useChatStore();
+  const { activeTab, selectedUser } = useChatStore();
 
   return (
     <div className="relative w-full max-w-7xl h-screen flex rounded-sm p-5">
@@ -21,7 +21,7 @@ export const ChatPage = () => {
       </div>
       {/* Right side */}
       <div className="w-2/3 h-full flex-1 bg-black backdrop-blur-sm">
-        {setSelectedUSer ? <ChatContainer /> : <WaitingSelect />}
+        {selectedUser ? <ChatContainer /> : <NoConversation />}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ const __dirname = path.resolve(); //  gets absolute path to backend folder
 
 const port = ENV.PORT || 3000;
 
-app.use(express.json()); // is a middleware that we calling to access field user sent by req.body
+app.use(express.json({ limit: "5mb" })); // is a middleware that we calling to access field user sent by req.body
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })); // allow frontend send cookie to backend
 app.use(cookieParser()); // allow read cookie from request
 

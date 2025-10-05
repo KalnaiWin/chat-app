@@ -18,7 +18,7 @@ export const ChatHeader = () => {
   }, [setSelectedUser]);
 
   return (
-    <div className="flex justify-between items-center bg-[#151515] border border-[#393939] p-3 w-full flex-1">
+    <div className="flex justify-between items-center bg-[#151515] border border-[#393939] p-3 w-full">
       <div className="flex items-center space-x-3">
         <div className="avatar avatar-online">
           <div className="w-12 rounded-full">

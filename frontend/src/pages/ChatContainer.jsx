@@ -7,8 +7,14 @@ import { MessageInput } from "../components/MessageInput";
 import { MessageLoadingSkeleton } from "../components/MessageLoadingSkeleton";
 
 export const ChatContainer = () => {
-  const { selectedUser, getMessagesByUserId, messages, isMessagesLoading } =
-    useChatStore();
+  const {
+    selectedUser,
+    getMessagesByUserId,
+    messages,
+    isMessagesLoading,
+    subscribeToMessage,
+    unSubscribeFromMessage,
+  } = useChatStore();
 
   const { authUser } = useAuthStore();
 
@@ -17,9 +23,19 @@ export const ChatContainer = () => {
 
   useEffect(() => {
     getMessagesByUserId(selectedUser._id);
-  }, [selectedUser, getMessagesByUserId]);
+    subscribeToMessage();
 
-  useEffect(() => { // scroll to the latest messages
+    //clean up
+    return () => unSubscribeFromMessage();
+  }, [
+    selectedUser,
+    getMessagesByUserId,
+    subscribeToMessage,
+    unSubscribeFromMessage,
+  ]);
+
+  useEffect(() => {
+    // scroll to the latest messages
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTo({
         top: scrollContainerRef.current.scrollHeight,

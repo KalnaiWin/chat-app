@@ -74,3 +74,4 @@
 
 1. Install socket for backend: `npm install socket.io`
 2. Create socket file in lib folder
+3. Update app and server from socket for server.js

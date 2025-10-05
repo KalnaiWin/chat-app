@@ -7,7 +7,7 @@ export const ContactList = () => {
   const { getAllContacts, allContacts, setSelectedUser, isUsersLoading } =
     useChatStore();
 
-  // const { onlineUsers } = useAuthStore();
+  const { onlineUsers } = useAuthStore();
 
   useEffect(() => {
     getAllContacts();
@@ -24,18 +24,20 @@ export const ContactList = () => {
           onClick={() => setSelectedUser(contact)}
         >
           <div className="flex items-center gap-3">
-            {/* <div
-            // className={`avatar ${
-            //   onlineUsers.includes(contact._id) ? "online" : "offline"
-            // }`}
-            > */}
-            <div className="size-12 rounded-full">
-              <img
-                src={contact.profilePic || "/assets/avatar.png"}
-                className="size-full"
-              />
+            <div
+              className={`avatar ${
+                onlineUsers.includes(contact._id)
+                  ? "avatar-online"
+                  : "avatar-offline"
+              }`}
+            >
+              <div className="size-12 rounded-full">
+                <img
+                  src={contact.profilePic || "/assets/avatar.png"}
+                  className="size-full"
+                />
+              </div>
             </div>
-            {/* </div> */}
             <h4 className="text-slate-200 font-medium">{contact.fullName}</h4>
           </div>
         </div>

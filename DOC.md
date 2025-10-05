@@ -11,3 +11,7 @@
 3. Delete node_modules in backend and frontend then run `npm run build` and `npm run start`
 3.5. Add `"engines": { "node": ">=20.0.0" }`
 4. Deploy on Sevalla
+
+===== Stage 16: SocketIO && online users =====
+
+1. Install socket for frontend: `npm install socket.io-client`

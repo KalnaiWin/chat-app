@@ -15,7 +15,7 @@ export const ProfileHeader = () => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    const reader = new FileReader();// browser API to read file contents.
+    const reader = new FileReader(); // browser API to read file contents.
     reader.readAsDataURL(file); // reads the file and converts it into a Base64 encoded string
 
     reader.onloadend = async () => {

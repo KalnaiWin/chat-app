@@ -58,6 +58,10 @@ export const getMessagesByUserId = async (req, res) => {
         { senderId: myId, receiverId: userToChatId },
         { senderId: userToChatId, receiverId: myId },
       ],
+    }).populate({
+      // every message has a reply field
+      path: "reply",
+      select: "text image senderId createdAt",
     });
 
     res.status(200).json(messages);
@@ -119,10 +123,9 @@ export const sendMessage = async (req, res) => {
 };
 
 export const deleteMessage = async (req, res) => {
+  const { id: messageId } = req.params;
+  const userId = req.user._id;
   try {
-    const { id: messageId } = req.params;
-    const userId = req.user._id;
-
     const message = await Message.findById(messageId);
     if (!message) {
       return res.status(404).json({ message: "Message not found" });
@@ -144,5 +147,40 @@ export const deleteMessage = async (req, res) => {
   } catch (error) {
     console.error("Error deleting message:", error);
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const replyMessage = async (req, res) => {
+  const userId = req.user._id;
+  const { id: replyToMessageId } = req.params;
+  const { text, image } = req.body;
+
+  try {
+    const replyMessage = await Message.findById(replyToMessageId);
+    if (!replyMessage) {
+      return res.status(404).json({ message: "Message not found" });
+    }
+
+    const receiverId =
+      String(replyMessage.senderId) === String(userId)
+        ? replyMessage.receiverId
+        : replyMessage.senderId;
+
+    const newMessage = await Message.create({
+      senderId: userId,
+      receiverId,
+      text,
+      image,
+      reply: replyMessage._id,
+    });
+
+    const populated = await newMessage.populate({
+      path: "reply",
+      select: "text image senderId createdAt",
+    });
+
+    res.status(201).json(populated);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

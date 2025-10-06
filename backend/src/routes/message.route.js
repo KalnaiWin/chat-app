@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deleteMessage,
   getAllContacts,
   getChatPartners,
   getMessagesByUserId,
@@ -15,7 +16,7 @@ router.use(arcjetProtection, protectRoute);
 router.get("/contacts", getAllContacts);
 router.get("/chats", getChatPartners);
 router.get("/:id", getMessagesByUserId);
-router.post("/send/:id", sendMessage);  
+router.post("/send/:id", sendMessage);
+router.delete("/:id", deleteMessage);
 
 export default router;
-

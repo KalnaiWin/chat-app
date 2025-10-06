@@ -16,6 +16,7 @@ export const ChatContainer = () => {
     isMessagesLoading,
     subscribeToMessage,
     unSubscribeFromMessage,
+    setReplyTo,
   } = useChatStore();
 
   const { authUser } = useAuthStore();
@@ -141,24 +142,53 @@ export const ChatContainer = () => {
                       >
                         Delete
                       </button>
-                      <button className="hover:bg-slate-400 rounded-b-sm px-1 py-2">
+                      <button
+                        className="hover:bg-slate-400 rounded-b-sm px-1 py-2"
+                        onClick={() => setReplyTo(message)}
+                      >
                         Reply
                       </button>
                     </div>
                   )}
+
+                  {/*  Show delete and reply */}
                   <button
                     onClick={() =>
                       setShowMenu(showMenu === message._id ? null : message._id)
                     }
-                    className={`absolute ${
-                      message.senderId === authUser._id
-                        ? "top-5 -left-5"
-                        : "top-5 -right-5"
+                    className={` absolute-top ${
+                      message.senderId === authUser._id ? "-left-5" : "-right-8"
                     } size-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   >
                     <EllipsisVertical />
                   </button>
 
+                  {/* Message with reply */}
+                  {message.reply && (
+                    <div className="mb-2 p-2 border-l-4 border-[#F25C54] bg-[#2a2a2a]/60 rounded">
+                      <p className="text-xs text-gray-300 mb-1">
+                        Replying to{" "}
+                        {message.reply.senderId === authUser._id
+                          ? "yourself"
+                          : "them"}
+                        :
+                      </p>
+                      {message.reply.text && (
+                        <p className="text-sm text-gray-200 truncate max-w-[200px]">
+                          {message.reply.text}
+                        </p>
+                      )}
+                      {message.reply.image && (
+                        <img
+                          src={message.reply.image}
+                          alt="Replied image"
+                          className="w-20 h-20 rounded mt-1 object-cover border border-gray-700"
+                        />
+                      )}
+                    </div>
+                  )}
+
+                  {/* Message without reply */}
                   {message.image && (
                     <img
                       src={message.image}
@@ -166,7 +196,11 @@ export const ChatContainer = () => {
                       className="rounded-lg object-cover"
                     />
                   )}
-                  {message.text && <p className="mt-2">{message.text}</p>}
+                  {message.text && (
+                    <span className="mt-2 whitespace-pre-wrap">
+                      {message.text}
+                    </span>
+                  )}
                   <p className="text-xs my-1 opacity-75 flex items-center gap-1">
                     {new Date(message.createdAt).toLocaleTimeString(undefined, {
                       day: "2-digit",

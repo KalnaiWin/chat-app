@@ -10,6 +10,7 @@ export const useChatStore = create((set, get) => ({
   chats: [],
   messages: [],
   activeTab: "chats",
+  getReply: null,
   selectedUser: null,
   isUsersLoading: false,
   isMessagesLoading: false,
@@ -88,7 +89,7 @@ export const useChatStore = create((set, get) => ({
       );
       set({ messages: [...messages, res.data] }); // contain old and new messages
     } catch (error) {
-      ste({ messages: messages }); // if error still return old messages
+      set({ messages: messages }); // if error still return old messages
       toast.error(error.response?.data?.message || "Something went wrong");
     }
   },
@@ -130,4 +131,18 @@ export const useChatStore = create((set, get) => ({
       console.log("Failed in deleting message: ", error);
     }
   },
+
+  replyMessage: async (data, messageId) => {
+    const { messages } = get();
+    try {
+      const res = await axiosInstance.post(`/message/reply/${messageId}`, data);
+      set({ messages: [...messages, res.data] });
+    } catch (error) {
+      set({ messages: messages }); // if error still return old messages
+      toast.error(error.response?.data?.message || "Something went wrong");
+    }
+  },
+
+  setReplyTo: (message) => set({ getReply: message }),
+  clearReplyTo: () => set({ getReply: null }),
 }));

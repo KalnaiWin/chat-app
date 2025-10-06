@@ -20,6 +20,11 @@ const messageSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    reply: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Message",
+      default: null,
+    },
   },
   { timestamps: true }
 );

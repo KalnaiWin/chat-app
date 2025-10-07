@@ -55,7 +55,7 @@ export const ProfileHeader = () => {
             <h3 className="text-slate-200 font-medium text-base truncate">
               {authUser.fullName}
             </h3>
-            <p className="text-slate-400 text-xs">Online</p>
+            <p className="text-green-500 text-xs">Online</p>
           </div>
         </div>
         {/* button */}

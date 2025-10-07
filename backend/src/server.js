@@ -6,6 +6,7 @@ import cors from "cors";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
+import friendRoutes from "./routes/friend.routes.js";
 import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
 import { app, server } from "./lib/socket.js";
@@ -21,6 +22,7 @@ app.use(cookieParser()); // allow read cookie from request
 
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/friend", friendRoutes);
 
 // make ready for deployment
 if (ENV.NODE_ENV === "production") {

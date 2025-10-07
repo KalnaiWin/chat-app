@@ -5,6 +5,8 @@ import { ProfileHeader } from "../components/ProfileHeader";
 import { ActiveTabSwitch } from "../components/ActiveTabSwitch";
 import { ChatContainer } from "./ChatContainer";
 import { NoConversation } from "../components/NoConversation";
+import { AllUsersPage } from "../components/AllUsersPage";
+import { FriendPage } from "./FriendPage";
 
 export const ChatPage = () => {
   const { activeTab, selectedUser } = useChatStore();
@@ -16,12 +18,24 @@ export const ChatPage = () => {
         <ProfileHeader />
         <ActiveTabSwitch />
         <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          {activeTab === "chats" ? <ChatList /> : <ContactList />}
+          {
+            {
+              chats: <ChatList />,
+              contacts: <ContactList />,
+              friends: <FriendPage />,
+            }[activeTab]
+          }
         </div>
       </div>
       {/* Right side */}
       <div className="w-2/3 h-full flex-1 bg-black backdrop-blur-sm">
-        {selectedUser ? <ChatContainer /> : <NoConversation />}
+        {activeTab === "friends" ? (
+          <AllUsersPage />
+        ) : selectedUser ? (
+          <ChatContainer />
+        ) : (
+          <NoConversation />
+        )}
       </div>
     </div>
   );

@@ -21,6 +21,14 @@ export const ActiveTabSwitch = () => {
       >
         Contacts
       </button>
+      <button
+        onClick={() => setActiveTab("friends")}
+        className={`tabs tabs-box w-1/2 flex justify-center ${
+          activeTab === "friends" ? "bg-[#F25C54]/20 text-[#F27059]" : ""
+        } `}
+      >
+        Friends
+      </button>
     </div>
   );
 };
